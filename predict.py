@@ -23,9 +23,9 @@ MODEL_WIDTH = 1024
 NUM_CLASSES = 7  # including background
 CUDA = True if torch.cuda.is_available() else False
 
-MODE = 'jpg'  # 'mp4' or 'jpg'
-DATA_PATH = './test/jpgs'  # .mp4 path or folder containing jpg images
-OUTPUT_PATH = './output/jpgs'  # where video file or jpg frames folder should be saved.
+MODE = 'mp4'  # 'mp4' or 'jpg'
+DATA_PATH = './test/mp4/test_video.mp4'  # .mp4 path or folder containing jpg images
+OUTPUT_PATH = './output/test.avi'  # where video file or jpg frames folder should be saved.
 
 # MODE = 'mp4'
 # DATA_PATH = './test/test.mp4'
