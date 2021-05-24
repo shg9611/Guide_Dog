@@ -73,23 +73,23 @@ class FrameGeneratorMP4:
 
             if FPS_OVERRIDE is not None:
                 self.fps = int(FPS_OVERRIDE)
-            self.out = cv2.VideoWriter(OUTPUT_PATH, self.fourcc, FPS, (ORIGINAL_WIDTH, ORIGINAL_HEIGHT))
+            self.out = cv2.VideoWriter(OUTPUT_PATH, self.fourcc, self.fps, (ORIGINAL_WIDTH, ORIGINAL_HEIGHT))
 
     def __iter__(self):
         success, image = self.vidcap.read()
 
-        prev_time = 0
+        #prev_time = 0
 
 
-        current_time=time.time()-prev_time
+        #current_time=time.time()-prev_time
 
         for i in range(0, self.total):
-            if (success) and (current_time>1./FPS):
-                prev_time = time.time()
+            if (success): #and (current_time>1./FPS):
+                #prev_time = time.time()
                 img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 yield np.array(img)
-                if cv2.waitKey(1) > 0:
-                    break
+                #if cv2.waitKey(1) > 0:
+                 #   break
 
             success, image = self.vidcap.read()
 
