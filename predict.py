@@ -25,7 +25,7 @@ CUDA = True if torch.cuda.is_available() else False
 
 MODE = 'mp4'  # 'mp4' or 'jpg'
 DATA_PATH = './test/mp4/test_video.mp4'  # .mp4 path or folder containing jpg images
-OUTPUT_PATH = './output/test.avi'  # where video file or jpg frames folder should be saved.
+OUTPUT_PATH = './output/mp4/test1.avi'  # where video file or jpg frames folder should be saved.
 
 # MODE = 'mp4'
 # DATA_PATH = './test/test.mp4'
@@ -34,7 +34,7 @@ OUTPUT_PATH = './output/test.avi'  # where video file or jpg frames folder shoul
 SHOW_OUTPUT = True if 'DISPLAY' in os.environ else False  # whether to cv2.show()
 
 OVERLAPPING = True  # whether to mix segmentation map and original image
-FPS_OVERRIDE = 60  # None to use original video fps
+FPS_OVERRIDE = 10  # None to use original video fps
 
 CUSTOM_COLOR_MAP = [
     [0, 0, 0],  # background
