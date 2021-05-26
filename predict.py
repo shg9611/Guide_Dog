@@ -27,11 +27,11 @@ NUM_CLASSES = 7  # including background
 CUDA = True if torch.cuda.is_available() else False
 
 MODE = 'mp4'  # 'mp4' or 'jpg'
-DATA_PATH = './test/mp4/test_video.mp4'  # .mp4 path or folder containing jpg images
+DATA_PATH = './test/mp4//fps_drop/test_video_drop.mp4'  # .mp4 path or folder containing jpg images
 OUTPUT_PATH = './output/mp4/test1.avi'  # where video file or jpg frames folder should be saved.
 
 # MODE = 'mp4'
-# DATA_PATH = './test/test.mp4'
+# DATA_PATH = './test/mp4/test_video2.mp4'
 # OUTPUT_PATH = './output/test.avi'
 
 SHOW_OUTPUT = True if 'DISPLAY' in os.environ else False  # whether to cv2.show()
@@ -52,7 +52,7 @@ CUSTOM_COLOR_MAP = [
 CUSTOM_N_CLASSES = len(CUSTOM_COLOR_MAP)
 ######
 
-FPS = 1
+
 
 class FrameGeneratorMP4:
     def __init__(self, mp4_file: str, output_path=None, show=True): #self는 객체 자기 자신
@@ -62,9 +62,6 @@ class FrameGeneratorMP4:
         self.total = int(self.vidcap.get(cv2.CAP_PROP_FRAME_COUNT))#최적화 위해 원본 영상 프레임 1/10으로 감소
         self.show = show
         self.output_path = output_path
-
-
-
 
 
         if self.output_path is not None:
@@ -78,20 +75,21 @@ class FrameGeneratorMP4:
     def __iter__(self):
         success, image = self.vidcap.read()
 
-        #prev_time = 0
+        prev_time = 0
 
 
-        #current_time=time.time()-prev_time
+        current_time=time.time()-prev_time
 
         for i in range(0, self.total):
-            if (success): #and (current_time>1./FPS):
-                #prev_time = time.time()
+            if (success):
+                prev_time = time.time()
+
                 img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
                 yield np.array(img)
-                #if cv2.waitKey(1) > 0:
-                 #   break
-
-            success, image = self.vidcap.read()
+                if cv2.waitKey(1) > 0:
+                    break
+            if (current_time>1./(self.fps)):
+                success, image = self.vidcap.read()
 
 
     def __len__(self):
