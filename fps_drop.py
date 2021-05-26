@@ -2,7 +2,7 @@ import cv2
 import time
 
 save_path='./test/mp4/fps_drop/test_video_drop.mp4'
-video = cv2.VideoCapture('./test/mp4/test_video2.mp4')
+video = cv2.VideoCapture('./test/mp4/test_video.mp4')
 w, h = int(video.get(cv2.CAP_PROP_FRAME_WIDTH)), int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
 prev_time=0
 FPS=int(video.get(cv2.CAP_PROP_FPS))
@@ -20,7 +20,7 @@ while(video.isOpened()):
 
     if (ret is True) and (current_time > 1. / FPS):
         prev_time = time.time()
-        frame=frame+30s
+        frame=frame+30
         frame = cv2.cvtColor(frame,cv2.COLOR_BGR2HSV)
 
         h,s,v=cv2.split(frame)
