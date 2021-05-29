@@ -1,4 +1,4 @@
-# segmentation-selectstar
+# 화면 속 안내견
 
 ![](https://media.giphy.com/media/S7KnEAj0ZYpXeDLLuJ/giphy.gif)
 
