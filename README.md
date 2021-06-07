@@ -17,7 +17,7 @@ Open CV를 활용하며 기존에 존재하는 오픈소스를 활용하여 오�
 
 ## Sample Results
 
-![](docs/imgs/output.jpg) 
+![](docs/imgs/output.gif) 
 
 Semantic Segmentation Original repository: https://github.com/selectstarofficial/segmentation-selectstar
 
